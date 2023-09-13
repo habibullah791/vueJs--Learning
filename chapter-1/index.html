@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js - Learning</title>
+
+    <!-- including vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <!-- v-model works as a two way binding -->
+        <input type="text" v-model="greetings">
+
+        <p>{{greetings}} = <i>total char are</i> <b>{{greetings.length }}</b></p>
+    </div>
+
+    <!-- Vue script
+    1 way to structure our vue App
+    Options API - Its is the original way  -->
+    
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    greetings: "Started vue js",
+                }
+            },
+
+            mounted() {
+                setTimeout(() => {
+                    this.greetings = "Changed"
+                }, 3000);
+            },
+        }).mount("#app")
+    </script>
+</body>
+
+</html>

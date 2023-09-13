@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js -Learning</title>
+
+    <!-- including vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<style>
+    html,
+    body {
+
+        height: 100%;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .text-black {
+        color: black;
+        background-color: white;
+    }
+
+    .text-white {
+        color: white;
+        background-color: black;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <button :class="active ? 'text-black' : 'text-white'" @click="toggle">Change color</button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    active: false,
+                }
+            },
+
+            methods: {
+                toggle() {
+                    this.active = !this.active;
+                }
+            },
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue js - Learning</title>
+
+    <!-- including vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <!-- Including Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="h-full grid place-items-center">
+    <div id="app" class="p-5">
+      <section v-show="inProgressTasks.length">
+        <h1 class="text-2xl font-semibold mb-4">In progress Task</h1>
+        <ul>
+          <li v-for=" assignment in inProgressTasks" :key="assignment.id">
+            <label>
+              {{assignment.name}}
+              <input type="checkbox" v-model="assignment.complete" />
+            </label>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-4" v-show="completedTasks.length">
+        <h1 class="text-2xl font-semibold mb-4">Completed Task</h1>
+        <ul>
+          <li v-for=" assignment in completedTasks" :key="assignment.id">
+            <label>
+              {{assignment.name}}
+              <input type="checkbox" v-model="assignment.complete" />
+            </label>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            assignments: [
+              { id: 1, name: "Vue learning", complete: false },
+              { id: 2, name: "How to style", complete: false },
+              { id: 3, name: "Responsive design", complete: false },
+              { id: 4, name: "Algo expert", complete: false },
+            ],
+          };
+        },
+
+        computed: {
+          completedTasks() {
+            return this.assignments.filter((a) => a.complete);
+          },
+          inProgressTasks() {
+            return this.assignments.filter((a) => !a.complete);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
